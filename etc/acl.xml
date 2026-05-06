@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::system">
+                    <resource id="Magebit_Mcp::mcp">
+                        <resource id="Magebit_Mcp::tools">
+
+                            <!-- Catalog rule read tools -->
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_catalog_rule_list"
+                                      title="Tool: List Catalog Rules" sortOrder="100"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_catalog_rule_get"
+                                      title="Tool: Get Catalog Rule" sortOrder="101"/>
+
+                            <!-- Cart rule read tools -->
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_list"
+                                      title="Tool: List Cart Price Rules" sortOrder="110"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_get"
+                                      title="Tool: Get Cart Price Rule" sortOrder="111"/>
+
+                            <!-- Coupon read tools -->
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_coupon_list"
+                                      title="Tool: List Coupons" sortOrder="120"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_coupon_get"
+                                      title="Tool: Get Coupon" sortOrder="121"/>
+
+                            <!-- Catalog rule write tools -->
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_catalog_rule_delete"
+                                      title="Tool: Delete Catalog Rule" sortOrder="200"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_catalog_rule_set_active"
+                                      title="Tool: Activate / Deactivate Catalog Rule" sortOrder="201"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_catalog_rule_apply_all"
+                                      title="Tool: Apply All Catalog Rules" sortOrder="202"/>
+
+                            <!-- Cart rule write tools -->
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_delete"
+                                      title="Tool: Delete Cart Price Rule" sortOrder="210"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_set_active"
+                                      title="Tool: Activate / Deactivate Cart Price Rule" sortOrder="211"/>
+
+                            <!-- Coupon write tools -->
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_coupon_generate"
+                                      title="Tool: Generate Coupon Codes" sortOrder="220"/>
+                            <resource id="Magebit_McpMarketingTools::tool_marketing_cart_rule_coupon_delete"
+                                      title="Tool: Delete Coupons" sortOrder="221"/>
+
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Register every tool with the base module's ToolRegistry. -->
+    <type name="Magebit\Mcp\Model\Tool\ToolRegistry">
+        <arguments>
+            <argument name="tools" xsi:type="array">
+                <!-- Catalog rule tools -->
+                <item name="marketing.catalog_rule.list" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleList
+                </item>
+                <item name="marketing.catalog_rule.get" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleGet
+                </item>
+                <item name="marketing.catalog_rule.delete" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleDelete
+                </item>
+                <item name="marketing.catalog_rule.set_active" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleSetActive
+                </item>
+                <item name="marketing.catalog_rule.apply_all" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleApplyAll
+                </item>
+
+                <!-- Cart rule tools -->
+                <item name="marketing.cart_rule.list" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\CartRuleList
+                </item>
+                <item name="marketing.cart_rule.get" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\CartRuleGet
+                </item>
+                <item name="marketing.cart_rule.delete" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\CartRuleDelete
+                </item>
+                <item name="marketing.cart_rule.set_active" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\CartRuleSetActive
+                </item>
+
+                <!-- Coupon tools -->
+                <item name="marketing.cart_rule.coupon.list" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\Coupon\CouponList
+                </item>
+                <item name="marketing.cart_rule.coupon.get" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\Coupon\CouponGet
+                </item>
+                <item name="marketing.cart_rule.coupon.generate" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\Coupon\CouponGenerate
+                </item>
+                <item name="marketing.cart_rule.coupon.delete" xsi:type="object">
+                    Magebit\McpMarketingTools\Tool\Marketing\CartRule\Coupon\CouponDelete
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Catalog rule field resolvers — shared between get and list. -->
+    <type name="Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleGet">
+        <arguments>
+            <argument name="fieldResolvers" xsi:type="array">
+                <item name="identity" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\IdentityResolver
+                </item>
+                <item name="scope" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ScopeResolver
+                </item>
+                <item name="schedule" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ScheduleResolver
+                </item>
+                <item name="conditions" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ConditionsResolver
+                </item>
+                <item name="action" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ActionResolver
+                </item>
+                <item name="lifecycle" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\LifecycleResolver
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magebit\McpMarketingTools\Tool\Marketing\CatalogRule\CatalogRuleList">
+        <arguments>
+            <argument name="fieldResolvers" xsi:type="array">
+                <item name="identity" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\IdentityResolver
+                </item>
+                <item name="scope" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ScopeResolver
+                </item>
+                <item name="schedule" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ScheduleResolver
+                </item>
+                <item name="action" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\ActionResolver
+                </item>
+                <item name="lifecycle" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CatalogRule\LifecycleResolver
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Cart rule field resolvers — shared between get and list. -->
+    <type name="Magebit\McpMarketingTools\Tool\Marketing\CartRule\CartRuleGet">
+        <arguments>
+            <argument name="fieldResolvers" xsi:type="array">
+                <item name="identity" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\IdentityResolver
+                </item>
+                <item name="scope" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ScopeResolver
+                </item>
+                <item name="schedule" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ScheduleResolver
+                </item>
+                <item name="condition" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ConditionsResolver
+                </item>
+                <item name="action_condition" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ActionConditionResolver
+                </item>
+                <item name="action" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ActionResolver
+                </item>
+                <item name="coupon_settings" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\CouponSettingsResolver
+                </item>
+                <item name="usage" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\UsageResolver
+                </item>
+                <item name="store_labels" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\StoreLabelsResolver
+                </item>
+                <item name="lifecycle" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\LifecycleResolver
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magebit\McpMarketingTools\Tool\Marketing\CartRule\CartRuleList">
+        <arguments>
+            <argument name="fieldResolvers" xsi:type="array">
+                <item name="identity" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\IdentityResolver
+                </item>
+                <item name="scope" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ScopeResolver
+                </item>
+                <item name="schedule" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ScheduleResolver
+                </item>
+                <item name="action" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\ActionResolver
+                </item>
+                <item name="coupon_settings" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\CouponSettingsResolver
+                </item>
+                <item name="usage" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\UsageResolver
+                </item>
+                <item name="lifecycle" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\CartRule\LifecycleResolver
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Coupon field resolvers — shared between get and list. -->
+    <type name="Magebit\McpMarketingTools\Tool\Marketing\CartRule\Coupon\CouponGet">
+        <arguments>
+            <argument name="fieldResolvers" xsi:type="array">
+                <item name="identity" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\IdentityResolver
+                </item>
+                <item name="rule" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\RuleResolver
+                </item>
+                <item name="usage" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\UsageResolver
+                </item>
+                <item name="lifecycle" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\LifecycleResolver
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magebit\McpMarketingTools\Tool\Marketing\CartRule\Coupon\CouponList">
+        <arguments>
+            <argument name="fieldResolvers" xsi:type="array">
+                <item name="identity" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\IdentityResolver
+                </item>
+                <item name="rule" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\RuleResolver
+                </item>
+                <item name="usage" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\UsageResolver
+                </item>
+                <item name="lifecycle" xsi:type="object">
+                    Magebit\McpMarketingTools\Model\FieldResolver\Coupon\LifecycleResolver
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>
