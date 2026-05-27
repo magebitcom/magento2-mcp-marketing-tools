@@ -47,9 +47,6 @@ class StoreLabelsResolver implements CartRuleFieldResolverInterface
         }
         $rows = [];
         foreach ($labels as $label) {
-            if (!$label instanceof RuleLabelInterface) {
-                continue;
-            }
             $rows[] = [
                 'store_id' => (int) $label->getStoreId(),
                 'store_label' => (string) $label->getStoreLabel(),
