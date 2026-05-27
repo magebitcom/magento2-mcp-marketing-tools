@@ -178,8 +178,6 @@ class CouponGenerate implements ToolInterface, UnderlyingAclAwareInterface
                 'rule_id' => $ruleId,
                 'requested_quantity' => $quantity,
                 'generated_count' => count($codes),
-                'first_code' => $codes[0] ?? null,
-                'last_code' => $codes !== [] ? $codes[count($codes) - 1] : null,
             ]
         );
     }
