@@ -69,10 +69,17 @@ class CartRuleList implements ToolInterface
     {
         return Schema::object()
             ->with(Filters::describing(
-                'Filter clauses. Built-in keys: name (substring), is_active, '
-                . 'coupon_type (NO_COUPON|SPECIFIC_COUPON|AUTO), '
-                . 'customer_group_id, website_id (scalar or array), '
-                . 'from_date_after, to_date_before.'
+                'Filter clauses. `customer_group_id` / `website_id` accept a '
+                . 'scalar or array (⇒ IN); the other keys take a single scalar.',
+                [
+                    'name' => ['type' => 'string', 'description' => 'Substring match on rule name.'],
+                    'is_active' => ['type' => 'boolean', 'description' => 'Active (true) or inactive (false).'],
+                    'coupon_type' => ['type' => 'string', 'description' => 'One of NO_COUPON, SPECIFIC_COUPON, AUTO.'],
+                    'customer_group_id' => ['type' => ['integer', 'array'], 'description' => 'Customer group id(s) the rule applies to.'],
+                    'website_id' => ['type' => ['integer', 'array'], 'description' => 'Website id(s) the rule applies to.'],
+                    'from_date_after' => ['type' => 'string', 'description' => 'Rule start date on/after (ISO date).'],
+                    'to_date_before' => ['type' => 'string', 'description' => 'Rule end date on/before (ISO date).'],
+                ]
             ))
             ->with(Sort::fields(CartRuleSearchBuilder::SORTABLE_FIELDS, 'sort_order', 'asc'))
             ->with(Pagination::maxPageSize(CartRuleSearchBuilder::MAX_PAGE_SIZE))
