@@ -67,9 +67,15 @@ class CouponList implements ToolInterface
     {
         return Schema::object()
             ->with(Filters::describing(
-                'Filter clauses. Built-in keys: rule_id (scalar or array), '
-                . 'code (substring), type (MANUAL|GENERATED), is_primary, '
-                . 'created_after.'
+                'Filter clauses. `rule_id` accepts a scalar or array (⇒ IN); '
+                . 'the other keys take a single scalar.',
+                [
+                    'rule_id' => ['type' => ['integer', 'array'], 'description' => 'Parent cart-rule id(s) to scope coupons to.'],
+                    'code' => ['type' => 'string', 'description' => 'Substring match on coupon code.'],
+                    'type' => ['type' => 'string', 'description' => 'MANUAL or GENERATED.'],
+                    'is_primary' => ['type' => 'boolean', 'description' => 'Only the rule\'s primary coupon when true.'],
+                    'created_after' => ['type' => 'string', 'description' => 'Created on/after (ISO date).'],
+                ]
             ))
             ->with(Sort::fields(CouponSearchBuilder::SORTABLE_FIELDS, 'created_at', 'desc'))
             ->with(Pagination::maxPageSize(CouponSearchBuilder::MAX_PAGE_SIZE))

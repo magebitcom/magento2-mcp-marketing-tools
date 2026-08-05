@@ -67,9 +67,16 @@ class CatalogRuleList implements ToolInterface
     {
         return Schema::object()
             ->with(Filters::describing(
-                'Filter clauses. Built-in keys: name (substring), is_active, '
-                . 'customer_group_id, website_id (scalar or array), '
-                . 'from_date_after, to_date_before.'
+                'Filter clauses. `website_id` accepts a scalar or array (⇒ IN); '
+                . 'the other keys take a single scalar.',
+                [
+                    'name' => ['type' => 'string', 'description' => 'Substring match on rule name.'],
+                    'is_active' => ['type' => 'boolean', 'description' => 'Active (true) or inactive (false).'],
+                    'customer_group_id' => ['type' => 'integer', 'description' => 'Single customer group id the rule applies to.'],
+                    'website_id' => ['type' => ['integer', 'array'], 'description' => 'Website id(s) the rule applies to.'],
+                    'from_date_after' => ['type' => 'string', 'description' => 'Rule start date on/after (ISO date).'],
+                    'to_date_before' => ['type' => 'string', 'description' => 'Rule end date on/before (ISO date).'],
+                ]
             ))
             ->with(Sort::fields(CatalogRuleSearchBuilder::SORTABLE_FIELDS, 'sort_order', 'asc'))
             ->with(Pagination::maxPageSize(CatalogRuleSearchBuilder::MAX_PAGE_SIZE))
