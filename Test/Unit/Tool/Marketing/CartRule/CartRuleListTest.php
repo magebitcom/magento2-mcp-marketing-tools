@@ -21,9 +21,9 @@ class CartRuleListTest extends TestCase
     protected function setUp(): void
     {
         $this->tool = new CartRuleList(
-            $this->createMock(RuleRepositoryInterface::class),
-            $this->createMock(CartRuleSearchBuilder::class),
-            $this->createMock(ResolverPipeline::class),
+            $this->createStub(RuleRepositoryInterface::class),
+            $this->createStub(CartRuleSearchBuilder::class),
+            $this->createStub(ResolverPipeline::class),
             []
         );
     }

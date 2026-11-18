@@ -21,9 +21,9 @@ class CouponListTest extends TestCase
     protected function setUp(): void
     {
         $this->tool = new CouponList(
-            $this->createMock(CouponRepositoryInterface::class),
-            $this->createMock(CouponSearchBuilder::class),
-            $this->createMock(ResolverPipeline::class),
+            $this->createStub(CouponRepositoryInterface::class),
+            $this->createStub(CouponSearchBuilder::class),
+            $this->createStub(ResolverPipeline::class),
             []
         );
     }

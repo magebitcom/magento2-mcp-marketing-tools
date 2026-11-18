@@ -20,8 +20,8 @@ class CatalogRuleListTest extends TestCase
     protected function setUp(): void
     {
         $this->tool = new CatalogRuleList(
-            $this->createMock(CatalogRuleSearchBuilder::class),
-            $this->createMock(ResolverPipeline::class),
+            $this->createStub(CatalogRuleSearchBuilder::class),
+            $this->createStub(ResolverPipeline::class),
             []
         );
     }

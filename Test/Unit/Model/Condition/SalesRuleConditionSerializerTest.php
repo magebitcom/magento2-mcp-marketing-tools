@@ -10,7 +10,7 @@ namespace Magebit\McpMarketingTools\Test\Unit\Model\Condition;
 
 use Magebit\McpMarketingTools\Model\Condition\SalesRuleConditionSerializer;
 use Magento\SalesRule\Api\Data\ConditionInterface;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 class SalesRuleConditionSerializerTest extends TestCase
@@ -94,12 +94,12 @@ class SalesRuleConditionSerializerTest extends TestCase
 
     /**
      * @param array<string, mixed> $methods
-     * @return ConditionInterface&MockObject
+     * @return ConditionInterface&Stub
      */
     private function makeNode(array $methods): ConditionInterface
     {
-        /** @var ConditionInterface&MockObject $node */
-        $node = $this->createMock(ConditionInterface::class);
+        /** @var ConditionInterface&Stub $node */
+        $node = $this->createStub(ConditionInterface::class);
         foreach ($methods as $method => $value) {
             $node->method($method)->willReturn($value);
         }
